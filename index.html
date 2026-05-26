@@ -1,117 +1,619 @@
+# KTY Bakery — Premium 3D Japanese Cafe Website
+
+สร้างไฟล์ชื่อ:
+
+```bash
+index.html
+```
+
+แล้ว Copy Code ด้านล่างไปใส่ทั้งหมดได้เลย 🚀
+
+```html
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cookie Shop</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KTY Bakery</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
 
-    body{
+    *{
       margin:0;
-      font-family:Arial;
-      background:#fff5f7;
+      padding:0;
+      box-sizing:border-box;
     }
 
-    header{
-      background:#ff69b4;
-      color:white;
-      padding:20px;
-      text-align:center;
-      font-size:32px;
-      font-weight:bold;
+    body{
+      font-family:'Noto Sans Thai',sans-serif;
+      background:#f8f2ea;
+      overflow-x:hidden;
+      color:#2d1f16;
     }
 
-    .hero{
-      text-align:center;
-      padding:80px 20px;
+    h1,h2,h3{
+      font-family:'Playfair Display',serif;
     }
 
-    .hero h1{
-      font-size:50px;
-      color:#333;
-    }
-
-    .hero p{
-      color:#666;
-      font-size:20px;
-    }
-
-    .products{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:20px;
-      padding:40px;
-    }
-
-    .card{
-      background:white;
-      border-radius:20px;
+    .hero-bg{
+      background:
+      linear-gradient(rgba(22,14,10,0.65),rgba(22,14,10,0.7)),
+      url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=2000');
+      background-size:cover;
+      background-position:center;
+      min-height:100vh;
+      position:relative;
       overflow:hidden;
-      box-shadow:0 4px 10px rgba(0,0,0,0.1);
     }
 
-    .card img{
-      width:100%;
-      height:250px;
-      object-fit:cover;
+    .glass{
+      background:rgba(255,255,255,0.08);
+      backdrop-filter:blur(12px);
+      border:1px solid rgba(255,255,255,0.12);
+      box-shadow:0 10px 40px rgba(0,0,0,0.25);
     }
 
-    .card h2{
-      padding:10px;
+    .floating-cookie{
+      position:absolute;
+      animation:floating 6s ease-in-out infinite;
+      filter:drop-shadow(0 25px 30px rgba(0,0,0,0.35));
+      transition:0.3s;
     }
 
-    .card p{
-      padding:0 10px 20px;
+    .floating-cookie:hover{
+      transform:scale(1.1) rotate(10deg);
     }
 
-    footer{
-      background:#ff69b4;
+    @keyframes floating{
+      0%{
+        transform:translateY(0px) rotate(0deg);
+      }
+      50%{
+        transform:translateY(-25px) rotate(8deg);
+      }
+      100%{
+        transform:translateY(0px) rotate(0deg);
+      }
+    }
+
+    .card-3d{
+      transform-style:preserve-3d;
+      transition:0.4s;
+      background:white;
+      border-radius:28px;
+      overflow:hidden;
+      box-shadow:
+      0 15px 40px rgba(0,0,0,0.08),
+      inset 0 1px 1px rgba(255,255,255,0.6);
+    }
+
+    .card-3d:hover{
+      transform:
+      rotateX(8deg)
+      rotateY(-8deg)
+      translateY(-12px)
+      scale(1.02);
+
+      box-shadow:
+      0 35px 60px rgba(0,0,0,0.18);
+    }
+
+    .premium-btn{
+      background:linear-gradient(135deg,#d9b382,#8b5e3c);
       color:white;
-      text-align:center;
-      padding:20px;
+      padding:16px 34px;
+      border-radius:999px;
+      font-weight:700;
+      transition:0.3s;
+      box-shadow:0 10px 30px rgba(139,94,60,0.35);
+    }
+
+    .premium-btn:hover{
+      transform:translateY(-4px) scale(1.03);
+      box-shadow:0 20px 40px rgba(139,94,60,0.45);
+    }
+
+    .soft-card{
+      background:rgba(255,255,255,0.8);
+      backdrop-filter:blur(10px);
+      border:1px solid rgba(255,255,255,0.5);
+      border-radius:30px;
+      box-shadow:0 15px 40px rgba(0,0,0,0.08);
+    }
+
+    .section-title{
+      font-size:52px;
+      line-height:1.2;
+      color:#2b1a12;
+    }
+
+    .fade-up{
+      animation:fadeUp 1s ease forwards;
+    }
+
+    @keyframes fadeUp{
+      from{
+        opacity:0;
+        transform:translateY(40px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    .review-card{
+      background:white;
+      border-radius:24px;
+      padding:30px;
+      box-shadow:0 10px 25px rgba(0,0,0,0.08);
+      transition:0.3s;
+    }
+
+    .review-card:hover{
+      transform:translateY(-10px);
+    }
+
+    .nav-link{
+      position:relative;
+    }
+
+    .nav-link::after{
+      content:'';
+      position:absolute;
+      left:0;
+      bottom:-6px;
+      width:0%;
+      height:2px;
+      background:#f7d2aa;
+      transition:0.3s;
+    }
+
+    .nav-link:hover::after{
+      width:100%;
+    }
+
+    .hero-glow{
+      position:absolute;
+      width:500px;
+      height:500px;
+      background:rgba(255,193,122,0.15);
+      border-radius:50%;
+      filter:blur(80px);
+      top:10%;
+      right:10%;
+    }
+
+    html{
+      scroll-behavior:smooth;
     }
 
   </style>
-
 </head>
 
 <body>
 
-<header>
-  🍪 Cookie Shop
-</header>
+  <section class="hero-bg relative">
 
-<section class="hero">
-  <h1>Fresh Homemade Cookies</h1>
-  <p>อบใหม่ทุกวัน ส่งตรงถึงบ้านคุณ</p>
-</section>
+    <div class="hero-glow"></div>
 
-<section class="products">
+    <nav class="w-full px-8 lg:px-20 py-8 flex items-center justify-between text-white z-50 relative">
 
-  <div class="card">
-    <img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?q=80&w=1200">
-    <h2>Chocolate Cake</h2>
-    <p>199 บาท</p>
-  </div>
+      <div>
+        <h1 class="text-3xl font-bold tracking-wide">KTY Bakery</h1>
+        <p class="text-sm opacity-80">Japanese Dessert Cafe</p>
+      </div>
 
-  <div class="card">
-    <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=1200">
-    <h2>Cookies</h2>
-    <p>89 บาท</p>
-  </div>
+      <div class="hidden lg:flex items-center gap-10 text-lg">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#products" class="nav-link">Products</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#reviews" class="nav-link">Reviews</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
 
-  <div class="card">
-    <img src="https://images.unsplash.com/photo-1519864600265-abb23847ef2c?q=80&w=1200">
-    <h2>Donut</h2>
-    <p>79 บาท</p>
-  </div>
+      <a href="#order" class="premium-btn">
+        Order Now
+      </a>
 
-</section>
+    </nav>
 
-<footer>
-  © 2026 Cookie Shop
-</footer>
+    <div class="max-w-7xl mx-auto px-8 lg:px-20 min-h-[85vh] flex items-center relative z-10">
+
+      <div class="grid lg:grid-cols-2 gap-16 items-center w-full">
+
+        <div class="fade-up text-white">
+
+          <p class="uppercase tracking-[6px] text-[#f6d8b4] mb-6">
+            Japanese Homemade Dessert
+          </p>
+
+          <h1 class="text-6xl lg:text-8xl font-bold leading-tight mb-8">
+            KTY
+            <br>
+            Bakery
+          </h1>
+
+          <p class="text-xl text-[#f5e6d7] leading-relaxed mb-10 max-w-xl">
+            ร้านเบเกอรี่สไตล์ญี่ปุ่นที่รวมความ Premium และความอบอุ่นเข้าไว้ด้วยกัน พร้อมคุกกี้โฮมเมดสดใหม่ทุกวัน
+          </p>
+
+          <div class="flex flex-wrap gap-5">
+
+            <a href="#products" class="premium-btn">
+              ดูสินค้า
+            </a>
+
+            <a href="#about" class="glass px-8 py-4 rounded-full text-lg font-semibold hover:scale-105 transition">
+              About Us
+            </a>
+
+          </div>
+
+        </div>
+
+        <div class="relative h-[700px] hidden lg:block">
+
+          <img
+            src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?q=80&w=1200"
+            class="floating-cookie w-[450px] top-20 right-20 rounded-full"
+            style="animation-delay:0s"
+          >
+
+          <img
+            src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?q=80&w=1200"
+            class="floating-cookie w-[180px] top-10 left-0 rounded-full"
+            style="animation-delay:1s"
+          >
+
+          <img
+            src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=1200"
+            class="floating-cookie w-[200px] bottom-10 right-0 rounded-full"
+            style="animation-delay:2s"
+          >
+
+          <div class="glass absolute bottom-20 left-0 p-8 rounded-[30px] text-white max-w-sm">
+
+            <h3 class="text-2xl font-bold mb-4">
+              Premium Quality
+            </h3>
+
+            <p class="leading-relaxed text-[#eee]">
+              ใช้วัตถุดิบคุณภาพสูง นำเข้าจากญี่ปุ่น อบสดใหม่ทุกวัน พร้อมความใส่ใจในทุกชิ้น
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="products" class="py-28 px-8 lg:px-20 bg-[#f8f2ea]">
+
+    <div class="text-center mb-20">
+
+      <p class="text-[#8b5e3c] uppercase tracking-[5px] mb-4">
+        Popular Menu
+      </p>
+
+      <h2 class="section-title">
+        Signature Products
+      </h2>
+
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 max-w-7xl mx-auto">
+
+      <div class="card-3d">
+
+        <img
+          src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?q=80&w=1200"
+          class="w-full h-[280px] object-cover"
+        >
+
+        <div class="p-8">
+          <h3 class="text-3xl font-bold mb-3">Chocolate Cookie</h3>
+          <p class="text-gray-600 mb-6">คุกกี้ช็อกโกแลตโฮมเมดสไตล์ญี่ปุ่น</p>
+
+          <div class="flex items-center justify-between">
+            <span class="text-3xl font-bold text-[#8b5e3c]">฿89</span>
+            <button class="premium-btn text-sm px-6 py-3">
+              Order
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="card-3d">
+
+        <img
+          src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=1200"
+          class="w-full h-[280px] object-cover"
+        >
+
+        <div class="p-8">
+          <h3 class="text-3xl font-bold mb-3">Fudge Brownie</h3>
+          <p class="text-gray-600 mb-6">บราวนี่เข้มข้น Premium Chocolate</p>
+
+          <div class="flex items-center justify-between">
+            <span class="text-3xl font-bold text-[#8b5e3c]">฿129</span>
+            <button class="premium-btn text-sm px-6 py-3">
+              Order
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="card-3d">
+
+        <img
+          src="https://images.unsplash.com/photo-1519864600265-abb23847ef2c?q=80&w=1200"
+          class="w-full h-[280px] object-cover"
+        >
+
+        <div class="p-8">
+          <h3 class="text-3xl font-bold mb-3">Strawberry Donut</h3>
+          <p class="text-gray-600 mb-6">โดนัทโฮมเมดนุ่มละมุน</p>
+
+          <div class="flex items-center justify-between">
+            <span class="text-3xl font-bold text-[#8b5e3c]">฿79</span>
+            <button class="premium-btn text-sm px-6 py-3">
+              Order
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="card-3d">
+
+        <img
+          src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?q=80&w=1200"
+          class="w-full h-[280px] object-cover"
+        >
+
+        <div class="p-8">
+          <h3 class="text-3xl font-bold mb-3">Matcha Cake</h3>
+          <p class="text-gray-600 mb-6">เค้กมัทฉะญี่ปุ่นสูตรพรีเมียม</p>
+
+          <div class="flex items-center justify-between">
+            <span class="text-3xl font-bold text-[#8b5e3c]">฿199</span>
+            <button class="premium-btn text-sm px-6 py-3">
+              Order
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="about" class="py-28 px-8 lg:px-20">
+
+    <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
+
+      <div>
+
+        <img
+          src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1200"
+          class="rounded-[40px] shadow-2xl"
+        >
+
+      </div>
+
+      <div>
+
+        <p class="uppercase tracking-[5px] text-[#8b5e3c] mb-5">
+          About Us
+        </p>
+
+        <h2 class="section-title mb-8">
+          Japanese Cafe Experience
+        </h2>
+
+        <p class="text-xl text-gray-700 leading-relaxed mb-8">
+          KTY Bakery ได้แรงบันดาลใจจากคาเฟ่ญี่ปุ่นยุคใหม่ ผสมผสานความอบอุ่น ความ Minimal และขนมคุณภาพระดับ Premium เพื่อให้ทุกคำที่คุณทานเต็มไปด้วยความสุข
+        </p>
+
+        <div class="grid grid-cols-2 gap-6">
+
+          <div class="soft-card p-6">
+            <h3 class="text-2xl font-bold mb-3">Fresh Daily</h3>
+            <p>อบใหม่ทุกวัน</p>
+          </div>
+
+          <div class="soft-card p-6">
+            <h3 class="text-2xl font-bold mb-3">Premium</h3>
+            <p>วัตถุดิบคุณภาพสูง</p>
+          </div>
+
+          <div class="soft-card p-6">
+            <h3 class="text-2xl font-bold mb-3">Japanese Style</h3>
+            <p>คาเฟ่สไตล์ญี่ปุ่น</p>
+          </div>
+
+          <div class="soft-card p-6">
+            <h3 class="text-2xl font-bold mb-3">Delivery</h3>
+            <p>ส่งทั่วประเทศ</p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="reviews" class="py-28 px-8 lg:px-20 bg-white">
+
+    <div class="text-center mb-20">
+
+      <p class="uppercase tracking-[5px] text-[#8b5e3c] mb-4">
+        Customer Reviews
+      </p>
+
+      <h2 class="section-title">
+        What People Say
+      </h2>
+
+    </div>
+
+    <div class="grid lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
+
+      <div class="review-card">
+        <h3 class="text-2xl font-bold mb-4">Nattapong S.</h3>
+        <p class="text-[#8b5e3c] mb-4 text-xl">★★★★★</p>
+        <p class="text-gray-700 leading-relaxed">
+          คุกกี้อร่อยมาก หอมเนยสุด ๆ ร้านสวยมากเหมือนคาเฟ่ญี่ปุ่นจริง
+        </p>
+      </div>
+
+      <div class="review-card">
+        <h3 class="text-2xl font-bold mb-4">Chutima K.</h3>
+        <p class="text-[#8b5e3c] mb-4 text-xl">★★★★★</p>
+        <p class="text-gray-700 leading-relaxed">
+          เว็บสวยมาก Animation ดีมาก ดู Premium มากค่ะ
+        </p>
+      </div>
+
+      <div class="review-card">
+        <h3 class="text-2xl font-bold mb-4">Warawit T.</h3>
+        <p class="text-[#8b5e3c] mb-4 text-xl">★★★★★</p>
+        <p class="text-gray-700 leading-relaxed">
+          Brownie เข้มข้นมาก ส่งเร็ว แพ็คดีมากครับ
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="order" class="py-28 px-8 lg:px-20 bg-[#2d1f16] text-white text-center relative overflow-hidden">
+
+    <div class="hero-glow"></div>
+
+    <div class="max-w-4xl mx-auto relative z-10">
+
+      <p class="uppercase tracking-[5px] text-[#f6d8b4] mb-5">
+        Order Online
+      </p>
+
+      <h2 class="text-6xl font-bold mb-10">
+        Ready To Order?
+      </h2>
+
+      <p class="text-xl text-[#ddd] mb-12 leading-relaxed">
+        สั่งขนมได้ง่าย ๆ ผ่าน LINE Official Account พร้อมบริการจัดส่งทั่วประเทศ
+      </p>
+
+      <div class="flex flex-wrap items-center justify-center gap-6">
+
+        <a
+          href="https://line.me"
+          target="_blank"
+          class="premium-btn"
+        >
+          Order via LINE
+        </a>
+
+        <a
+          href="#contact"
+          class="glass px-8 py-4 rounded-full text-lg font-semibold"
+        >
+          Contact Us
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <footer id="contact" class="bg-[#1b120d] text-white py-20 px-8 lg:px-20">
+
+    <div class="max-w-7xl mx-auto grid lg:grid-cols-4 gap-12">
+
+      <div>
+
+        <h2 class="text-4xl font-bold mb-6">KTY Bakery</h2>
+
+        <p class="text-[#cfcfcf] leading-relaxed">
+          Japanese Homemade Dessert Cafe
+          <br>
+          Premium Bakery Experience
+        </p>
+
+      </div>
+
+      <div>
+
+        <h3 class="text-2xl font-bold mb-6">Menu</h3>
+
+        <div class="flex flex-col gap-4 text-[#d4d4d4]">
+          <a href="#">Cookies</a>
+          <a href="#">Brownie</a>
+          <a href="#">Cake</a>
+          <a href="#">Donut</a>
+        </div>
+
+      </div>
+
+      <div>
+
+        <h3 class="text-2xl font-bold mb-6">Contact</h3>
+
+        <div class="flex flex-col gap-4 text-[#d4d4d4]">
+          <p>Line: @ktybakery</p>
+          <p>Instagram: ktybakery</p>
+          <p>Tel: 099-999-9999</p>
+        </div>
+
+      </div>
+
+      <div>
+
+        <h3 class="text-2xl font-bold mb-6">Opening Hours</h3>
+
+        <div class="flex flex-col gap-4 text-[#d4d4d4]">
+          <p>Mon - Fri : 09:00 - 20:00</p>
+          <p>Sat - Sun : 10:00 - 22:00</p>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="border-t border-white/10 mt-16 pt-10 text-center text-[#aaa]">
+      © 2026 KTY Bakery — All Rights Reserved
+    </div>
+
+  </footer>
 
 </body>
 </html>
+```
+
+# วิธี Deploy
+
+1. เปิด GitHub Repository
+2. กด Add File
+3. Upload หรือ Replace `index.html`
+4. Commit Changes
+5. Cloudflare Pages จะ Deploy อัตโนมัติ
+
+เสร็จแล้วเว็บจะกลายเป็น Premium Japanese 3D Bakery Website ทันที 🔥
